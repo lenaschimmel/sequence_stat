@@ -1,0 +1,21 @@
+{
+  "name": "sequence_stat",
+  "version": "1.0.0",
+  "description": "Werte RKI-Sequenzdaten von SARS-CoV-Proben aus, um Omikron-Prävalenz zu schätzen.",
+  "main": "filter_by_id.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "corona",
+    "sarscov2",
+    "covid",
+    "rki",
+    "omikron",
+    "omicron",
+    "sequence"
+  ],
+  "author": "Lena Schimmel",
+  "license": "MIT",
+  "repository": "github:lenaschimmel/sequence_stat"
+}
