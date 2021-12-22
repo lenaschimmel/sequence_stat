@@ -54,14 +54,27 @@ Lässt die vorgefilterten Sequenzen mit nextclade analysieren und erzeugt eine M
  * Node.js >= v14.8
  * [nextclade CLI](https://docs.nextstrain.org/projects/nextclade/en/stable/user/nextclade-cli.html), nativ (also nicht Docker), mit dem Kommando `nextclade` im `PATH`
 
+## Aufruf
+Nachdem alle Requirements erfüllt sind:
+```
+./download_and_filter.sh
+./assign_clades.sh
+```
+
+Verschiedenste Daten liegen dann unter `data/`.
+
+## Ergebnisse
+Es gibt noch keine fertige Analyse. Ein erstes Zwischenergebnis:
+ * [Die 749 PCR-bestätigten Omikron-Fälle, Stand 22.12.2021, jeweils inkl. Grund der Proben-Entnahme, drei Zeit- und zwei Orts-Angaben](https://gist.github.com/lenaschimmel/35d553e2e615a98b56542bff7b66e56f)
+
 ## Kontakt und weitere Infos
 Updates über den Fortschritt der Tools und Analyse-Ergebnisse gibt's auf Twitter unter [@LenaSchimmel](https://twitter.com/LenaSchimmel). Eventuell (!) in Zukunft auch über einen gesonderten Account.
 
 Fragen und Anregungen gerne auch per Twitter, oder hier in den Issues.
 
-## Lizenz und 
+## Lizenz und Namensnennung
 Der Code steht unter MIT Lizenz.
 
 Die Analysen basieren auf Daten des Robert Koch-Instituts unter CC-BY 4.0 Internation Lizenz. Siehe [hier](https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland#lizenz).
 
-Die Analyse-Ergebnisse (so ich denn ich Kürze welche veröffentlichen werde) stehen ebenfalls unter CC-BY 4.0 Internation Lizenz, Namensnennung: "Lena Schimmel & Robert Koch-Institut".
+Die Analyse-Ergebnisse stehen ebenfalls unter CC-BY 4.0 Internation Lizenz, Namensnennung: "Lena Schimmel & Robert Koch-Institut".
