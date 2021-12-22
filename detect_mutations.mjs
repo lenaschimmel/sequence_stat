@@ -82,7 +82,7 @@ function processSequence(sequence) {
       // console.log(assay.name, testSequence(sequence, assay));
     }
   }
-
+/*
   if (result["denmark_primary_e_gene"] != "match probe 1") {
     return "negative";
   }
@@ -110,6 +110,10 @@ function processSequence(sequence) {
     result["denmark_small_l452r"] == "match probe 2"
   )
     return "omicron ba.2";
+*/
+    if (result["denmark_small_del69_70"]  == "match probe 1") {
+        return "omicron";
+    }
 
     return "unkown";
 }

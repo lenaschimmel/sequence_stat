@@ -35,7 +35,13 @@ const assays = {
         probe1: "HEX-TATAATTACCGGTATAGATTGTT-BHQ1",
         probe2: "Cal Fluor Red 610-TATAATTACCTGTATAGATTGTTTA-BHQ2"
     },
-
+    om_met: {
+        name: "OmMet",
+        foreward: "AACAAACCTTGTAATGGTGTTGC",
+        reverse: "TGCTGGTGCATGTAGAAGTTC",
+        probe1: "FAM-GATCATATAGTTTCCGACCCACTTATGGTGTTGGTC-QSY",
+       
+    }
 };
 
 export default assays;
