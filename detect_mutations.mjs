@@ -111,7 +111,7 @@ function processSequence(sequence) {
   )
     return "omicron ba.2";
 */
-    if (result["denmark_small_del69_70"]  == "match probe 1") {
+    if (result["om_met"]  == "match probe 1") {
         return "omicron";
     }
 
