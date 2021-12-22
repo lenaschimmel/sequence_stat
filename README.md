@@ -53,3 +53,15 @@ Lässt die vorgefilterten Sequenzen mit nextclade analysieren und erzeugt eine M
  * [xsv](https://github.com/BurntSushi/xsv)
  * Node.js >= v14.8
  * [nextclade CLI](https://docs.nextstrain.org/projects/nextclade/en/stable/user/nextclade-cli.html), nativ (also nicht Docker), mit dem Kommando `nextclade` im `PATH`
+
+## Kontakt und weitere Infos
+Updates über den Fortschritt der Tools und Analyse-Ergebnisse gibt's auf Twitter unter [@LenaSchimmel](https://twitter.com/LenaSchimmel). Eventuell (!) in Zukunft auch über einen gesonderten Account.
+
+Fragen und Anregungen gerne auch per Twitter, oder hier in den Issues.
+
+## Lizenz und 
+Der Code steht unter MIT Lizenz.
+
+Die Analysen basieren auf Daten des Robert Koch-Instituts unter CC-BY 4.0 Internation Lizenz. Siehe [hier](https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland#lizenz).
+
+Die Analyse-Ergebnisse (so ich denn ich Kürze welche veröffentlichen werde) stehen ebenfalls unter CC-BY 4.0 Internation Lizenz, Namensnennung: "Lena Schimmel & Robert Koch-Institut".
