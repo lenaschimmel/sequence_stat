@@ -16,6 +16,9 @@ xsv select IMS_ID data/latest.csv | tail -n +2 > data/IMS_ID.csv
 # Als nächstes die eigentlichen Sequenzen herunter laden. Der Download ist "nur" ca. 30 MB groß, aber entpackt über 12 GB.
 # Damit längst nicht so viel Speicherplatz gebraucht wird, speichern wir auch hier nur die aktuellen Zeilen.
 # Da in der .fasta-Datei keine Datumsangaben stehen, filtern wir nach den IDs, die wir in IMS_ID.pattern haben.
-curl ${RAW}/SARS-CoV-2-Sequenzdaten_Deutschland.fasta.xz | unxz | node filter_by_id.mjs data/IMS_ID.csv > data/filtered.fasta
+curl ${RAW}/SARS-CoV-2-Sequenzdaten_Deutschland.fasta.xz | unxz |  node filter_by_id.mjs data/IMS_ID.csv > data/filtered_by_date.fasta
 # Das würde theoretisch auch mit `grep -f` funktionieren, ist aber *viel* langsamer als dieses Node-Skript, das auf den
 # speziellen Anwendungsfall optimiert ist.
+
+# Jetzt machen wir eine *gaaaanz* grobe Probe, um Delta-Proben heraus zu filtern:
+grep -B 1 -v -e TACCGGTAT -e ">IMS" data/filtered_by_date.fasta | grep -v -- "^--$" > data/filtered_by_TACCGGTAT.fasta

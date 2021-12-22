@@ -9,19 +9,19 @@ Meines Wissens nach gibt es bisher noch keine Tagesaktuelle Auswertung der RKI-S
 ## Verfahren
  * [x] Daten vom RKI herunter laden
  * [x] Daten entpacken und dabei vorfiltern
- * [x] **WORK IN PROGRESS** Sequenzen auf Mutationen prüfen und (grob) einer Variante zuordnen
- * [ ] Metadaten um zugeordnete Variante erweitern 
+ * [x] Sequenzen auf Mutationen prüfen und Verdachtsfälle vorfiltern
+ * [x] Verdachtsfälle mittels [nextclade](https://docs.nextstrain.org/projects/nextclade/en/stable/index.html) eindeutig einer Variante zuordnen
+ * [x] Metadaten um zugeordnete Variante erweitern 
  * [ ] Diverse Auswertungen auf diesen Metadaten machen
  * [ ] Auswertungen visualisieren und veröffentlichen
 
-## WORK IN PROGRESS: Sequenzen auf Mutationen prüfen
-Natürlich gibt es etablierte Verfahren um in (digitalisierten) Virus-Sequenzen Mutationen und Varianten zu erkennen - aber damit kenne ich mich ehrlich gesagt nicht aus.
+## Sequenzen auf Mutationen prüfen und Verdachtsfälle vorfiltern
+Nach einigen umständlichen Versuchen (z.B. selbst gebastelte, grobe Simulation von PCR mit Primer und Probe) gehe ich nun so vor: alle Sequenzen, die den Abschnitt `TACCGGTAT` enthalten, sind mit extremer Wahrscheinlichkeit kein Omicron, sondern irgendwas wenig interessantes (Delta, Kappa, Lambda), und werden nicht näher betrachtet. Damit fallen 97,6% der Sequenzen raus, entsprechend viel schneller geht der nächste Schritt.
+## Verdachtsfälle mittels nextclade eindeutig einer Variante zuordnen
+Im Wesentlichen ganz normale Verwendung von nextclade gemäß [Dokumentation](https://docs.nextstrain.org/projects/nextclade/en/stable/user/nextclade-cli.html).
 
-Da ich mich in den letzten Wochen ganz grob darin eingearbeitet habe, wie eigentlich Varianten-PCRs funktionieren, und den Vorgang ein paar mal "von Hand" simuliert habe, lag es für mich nahe, zu Testzwecken kurzerhand genau dieses Verfahren implementieren. Das ist sicher nicht das effizienteste oder zuverlässigste Verfahren. Dafür kann ich damit - als Nebenprodukt dieser Software - ein paar Annahmen über PCRs prüfen.
-
-Die Ergebnisse dieser "PCR-Simulation" sind mittelmäßig. Gut genug, schonmal die weiteren Verarbeitungsschritte (statistische Auswertungen) zu testen, aber nicht gut genug, um die Ergebnisse ernst zu nehmen.
-
-Noch ist nicht entschieden, ob ich in Kürze auf ein gänzlich anderes Verfahren zur Varianten-Erkennung wechsle, oder ob ich bei diesem bleibe aber es noch verbessere.
+## Metadaten um zugeordnete Variante erweitern
+Mit `xsv join` werden die Varianten-Zuordnungen aus nextclade mit den Metadaten aus der Datenquelle vereint.
 ## Datenquelle
 In einem [Repository  des RKI](https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland) finden sich (überwiegend) komplette Sequenzen aus derzeit ca. 423.000 Proben inkl. einiger Metadaten:
  * IMS_ID: Eindeutige Kennung
@@ -36,15 +36,20 @@ In einem [Repository  des RKI](https://github.com/robert-koch-institut/SARS-CoV-
  * SEQUENCING_LAB_PC: Die Postleitzahl des sequenzierenden Labors
 
 ## Tools
-### `download_filter.sh`
-Dieses Bash-Skript lädt alle Sequenzdaten herunter, speichert dabei aber nur die aus den Monaten November und Dezemeber 2021. Ohne diese on-the-fly-Filterung würden über 12 GB Speicherplatz benötigt, so sind es aber *nur* 2,4 GB.
-### `detect_mutations.sh`
-Sucht mit einem ziemlich wackeligem Verfahren (siehe oben: "WORK IN PROGRESS: Sequenzen auf Mutationen prüfen") nach Mutationen und weist Varianten zu. Die Ergebisse werden in `data/variants.csv` geschrieben und ein paar Statistiken ausgegeben.
+### `download_and_filter.sh`
+Dieses Bash-Skript lädt alle Sequenz- und Metadaten herunter, speichert dabei aber nur die aus den Monaten November und Dezemeber 2021.
 
+Aus den Sequenzdaten filtert es außerdem noch alle raus, die sehr eindeutig nach Delta ausschauen.
+
+Ohne diese beiden on-the-fly-Filterungen würden über 12 GB Speicherplatz auf der Platte belegt, so sind es aber 61 MB.
+### `detect_mutations.sh`
+*Wird im aktuellen Workflow gar nicht mehr gebraucht, verbleibt aber für künftige Experimente*
+### `assign_clades.sh`
+Lässt die vorgefilterten Sequenzen mit nextclade analysieren und erzeugt eine Metadaten-csv, die auch die Angabe der Variante als Spalte enthält.
 ### Weitere Tools folgen bald...
 ## Requirements:
  * 2,5 GB freier Speicher
  * bash oder äquivalente Shell
  * [xsv](https://github.com/BurntSushi/xsv)
  * Node.js >= v14.8
-
+ * [nextclade CLI](https://docs.nextstrain.org/projects/nextclade/en/stable/user/nextclade-cli.html), nativ (also nicht Docker), mit dem Kommando `nextclade` im `PATH`

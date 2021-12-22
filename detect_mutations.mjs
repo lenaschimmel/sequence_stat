@@ -18,6 +18,7 @@ const wildtype = fs.readFileSync(filename).toString().split("\n")[1];
 */
 
 function testSequence(sequence, assay) {
+
   const adjustedReverse = nucleotide.toComplement(
     assay.reverse.split("").reverse().join("")
   );
@@ -27,6 +28,8 @@ function testSequence(sequence, assay) {
   if (matchReverse == -1) return "reverse fail " + adjustedReverse;
   if (matchForeward > matchReverse) return "primer order fail";
   const between = sequence.substring(matchForeward, matchReverse);
+  
+  //const between = sequence;
 
   // console.log("Test for " + trimProbe(assay.probe1));
 
@@ -79,7 +82,7 @@ function processSequence(sequence) {
     if (Object.hasOwnProperty.call(assays, key)) {
       const assay = assays[key];
       result[key] = testSequence(sequence, assay);
-      // console.log(assay.name, testSequence(sequence, assay));
+      //console.log(assay.name, testSequence(sequence, assay));
     }
   }
 /*
