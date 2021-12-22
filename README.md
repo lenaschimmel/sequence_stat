@@ -9,13 +9,21 @@ Meines Wissens nach gibt es bisher noch keine Tagesaktuelle Auswertung der RKI-S
 ## Verfahren
  * [x] Daten vom RKI herunter laden
  * [x] Daten entpacken und dabei vorfiltern
- * [ ] Sequenzen auf Mutationen prüfen und (grob) einer Variante zuordnen
+ * [x] **WORK IN PROGRESS** Sequenzen auf Mutationen prüfen und (grob) einer Variante zuordnen
  * [ ] Metadaten um zugeordnete Variante erweitern 
  * [ ] Diverse Auswertungen auf diesen Metadaten machen
  * [ ] Auswertungen visualisieren und veröffentlichen
 
+## WORK IN PROGRESS: Sequenzen auf Mutationen prüfen
+Natürlich gibt es etablierte Verfahren um in (digitalisierten) Virus-Sequenzen Mutationen und Varianten zu erkennen - aber damit kenne ich mich ehrlich gesagt nicht aus.
+
+Da ich mich in den letzten Wochen ganz grob darin eingearbeitet habe, wie eigentlich Varianten-PCRs funktionieren, und den Vorgang ein paar mal "von Hand" simuliert habe, lag es für mich nahe, zu Testzwecken kurzerhand genau dieses Verfahren implementieren. Das ist sicher nicht das effizienteste oder zuverlässigste Verfahren. Dafür kann ich damit - als Nebenprodukt dieser Software - ein paar Annahmen über PCRs prüfen.
+
+Die Ergebnisse dieser "PCR-Simulation" sind mittelmäßig. Gut genug, schonmal die weiteren Verarbeitungsschritte (statistische Auswertungen) zu testen, aber nicht gut genug, um die Ergebnisse ernst zu nehmen.
+
+Noch ist nicht entschieden, ob ich in Kürze auf ein gänzlich anderes Verfahren zur Varianten-Erkennung wechsle, oder ob ich bei diesem bleibe aber es noch verbessere.
 ## Datenquelle
-In einem [https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland](Repository  des RKI) finden sich (überwiegend) komplette Sequenzen aus derzeit ca. 423.000 Proben inkl. einiger Metadaten:
+In einem [Repository  des RKI](https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland) finden sich (überwiegend) komplette Sequenzen aus derzeit ca. 423.000 Proben inkl. einiger Metadaten:
  * IMS_ID: Eindeutige Kennung
  * DATE_DRAW: Datum der Probenentnahme
  * SEQ_TYPE: Verwendete Sequenzierungs-Plattform
@@ -30,11 +38,13 @@ In einem [https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_De
 ## Tools
 ### `download_filter.sh`
 Dieses Bash-Skript lädt alle Sequenzdaten herunter, speichert dabei aber nur die aus den Monaten November und Dezemeber 2021. Ohne diese on-the-fly-Filterung würden über 12 GB Speicherplatz benötigt, so sind es aber *nur* 2,4 GB.
+### `detect_mutations.sh`
+Sucht mit einem ziemlich wackeligem Verfahren (siehe oben: "WORK IN PROGRESS: Sequenzen auf Mutationen prüfen") nach Mutationen und weist Varianten zu. Die Ergebisse werden in `data/variants.csv` geschrieben und ein paar Statistiken ausgegeben.
 
-Requirements:
+### Weitere Tools folgen bald...
+## Requirements:
  * 2,5 GB freier Speicher
  * bash oder äquivalente Shell
  * [xsv](https://github.com/BurntSushi/xsv)
  * Node.js >= v14.8
 
-### Weitere Tools folgen bald...

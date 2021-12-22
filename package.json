@@ -17,5 +17,8 @@
   ],
   "author": "Lena Schimmel",
   "license": "MIT",
-  "repository": "github:lenaschimmel/sequence_stat"
+  "repository": "github:lenaschimmel/sequence_stat",
+  "dependencies": {
+    "central-dogma": "^0.0.5"
+  }
 }
