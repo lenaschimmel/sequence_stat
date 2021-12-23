@@ -3,7 +3,7 @@ Tool(s), um Statistiken aus Sequenzierungen abzuleiten, in erster Linie die aktu
 
 **⚠️⚠️WICHTIG⚠️⚠️ Die Tools und Daten aus diesem Repository sind eigentlich überflüssig und sollten i.d.R. nicht benutzt werden**
 
-Am Morgen des 23.12. kam heraus, dass das [Original-Repository des RKI]((https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland)) bereits eine Datei mit den Varianten-Zuordnungen besitzt, die nur bisher übersehen wurde. Es handelt sich um (SARS-CoV-2-Entwicklungslinien_Deutschland.csv.xz)[https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland/blob/master/SARS-CoV-2-Entwicklungslinien_Deutschland.csv.xz].
+Am Morgen des 23.12. kam heraus, dass das [Original-Repository des RKI](https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland) bereits eine Datei mit den Varianten-Zuordnungen besitzt, die nur bisher übersehen wurde. Es handelt sich um [SARS-CoV-2-Entwicklungslinien_Deutschland.csv.xz](https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland/blob/master/SARS-CoV-2-Entwicklungslinien_Deutschland.csv.xz).
 
 Ein bisschen Kontext dazu, wie das passieren konnte, gibt's [in diesen Tweets](https://twitter.com/LenaSchimmel/status/1473924350852177921).
 
