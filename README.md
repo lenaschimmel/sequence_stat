@@ -69,8 +69,9 @@ Nachdem alle Requirements erfüllt sind:
 Verschiedenste Daten liegen dann unter `data/`.
 
 ## Ergebnisse
-Es gibt noch keine fertige Analyse. Ein erstes Zwischenergebnis:
+Es gibt noch keine fertige Analyse. Erste Zwischenergebnisse:
  * [Die 749 PCR-bestätigten Omikron-Fälle, Stand 22.12.2021, jeweils inkl. Grund der Proben-Entnahme, drei Zeit- und zwei Orts-Angaben](https://gist.github.com/lenaschimmel/35d553e2e615a98b56542bff7b66e56f)
+ * [Datumsbezogene Auswertung Omikron-Fälle, Stand 2021-12-22](https://gist.github.com/lenaschimmel/23e0930aab3d09ab749765e3afa774d3)
   
 ## Kontakt und weitere Infos
 Updates über den Fortschritt der Tools und Analyse-Ergebnisse gibt's auf Twitter unter [@LenaSchimmel](https://twitter.com/LenaSchimmel). Eventuell (!) in Zukunft auch über einen gesonderten Account.
