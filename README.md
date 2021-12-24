@@ -1,11 +1,13 @@
 # Sequence Stat
 Tool(s), um Statistiken aus Sequenzierungen abzuleiten, in erster Linie die aktuelle Omicron-Fallzahl.
 
-**⚠️⚠️WICHTIG⚠️⚠️ Die Tools und Daten aus diesem Repository sind eigentlich überflüssig und sollten i.d.R. nicht benutzt werden**
+**⚠️⚠️WICHTIG⚠️⚠️ Die Tools und Daten aus diesem Repository sind eigentlich überflüssig und sollten i.d.R. nicht benutzt werden.**
 
 Am Morgen des 23.12. kam heraus, dass das [Original-Repository des RKI](https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland) bereits eine Datei mit den Varianten-Zuordnungen besitzt, die nur bisher übersehen wurde. Es handelt sich um [SARS-CoV-2-Entwicklungslinien_Deutschland.csv.xz](https://github.com/robert-koch-institut/SARS-CoV-2-Sequenzdaten_aus_Deutschland/blob/master/SARS-CoV-2-Entwicklungslinien_Deutschland.csv.xz).
 
 Ein bisschen Kontext dazu, wie das passieren konnte, gibt's [in diesen Tweets](https://twitter.com/LenaSchimmel/status/1473924350852177921).
+
+Allerdings gibt es Tage, an denen zwar neue Sequenzen, aber keine aktuellen Zuordnungen zu Entwicklungslinien veröffentlicht werden. An solchen Tagen können meine Tools doch noch nützlich sein, um aktuelle Zahlen zu erhalten.
 
 ## Hintergrund
 Deutschland steht kurz vor, oder bereits mitten in, einer fünften Infektionswelle, die durch die SARS-CoV-2-Variante B.1.1.529 alias Omikron getrieben wird. Es herrscht große Unklarheit über den aktuellen Anteil bzw. die Fallzahl dieser Variante.
@@ -23,6 +25,8 @@ Meines Wissens nach gibt es bisher noch keine Tagesaktuelle Auswertung der RKI-S
 
 ### Sequenzen auf Mutationen prüfen und Verdachtsfälle vorfiltern
 Nach einigen umständlichen Versuchen (z.B. selbst gebastelte, grobe Simulation von PCR mit Primer und Probe) gehe ich nun so vor: alle Sequenzen, die den Abschnitt `TACCGGTAT` enthalten, sind mit extremer Wahrscheinlichkeit kein Omicron, sondern irgendwas wenig interessantes (Delta, Kappa, Lambda), und werden nicht näher betrachtet. Damit fallen 97,6% der Sequenzen raus, entsprechend viel schneller geht der nächste Schritt.
+
+**⚠️⚠️WICHTIG⚠️⚠️** die vereinfachte Vorfilterung hat zwar deutlich weniger falsch-negative Omikron-Zuordnungen als die simulierte PCR, dennoch werden ca. 1,7% der Omikron-Sequenzen vorzeigtig als Nicht-Omikron heraus sortiert und fehlen in den Endergebnissen. Um exakte Zahlen zu erhalten, müsste die Vorfilterung deaktiviert werden, was zu extrem hohen Berechnungszeiten führen würde. Alternativ kann auch manuell eine Korrektur um +1,7% eingerechnet werden.
 ### Verdachtsfälle mittels nextclade eindeutig einer Variante zuordnen
 Im Wesentlichen ganz normale Verwendung von nextclade gemäß [Dokumentation](https://docs.nextstrain.org/projects/nextclade/en/stable/user/nextclade-cli.html).
 
@@ -78,6 +82,7 @@ Verschiedenste Daten liegen dann unter `data/`.
 Es gibt noch keine fertige Analyse. Erste Zwischenergebnisse:
  * [Die 749 PCR-bestätigten Omikron-Fälle, Stand 22.12.2021, jeweils inkl. Grund der Proben-Entnahme, drei Zeit- und zwei Orts-Angaben](https://gist.github.com/lenaschimmel/35d553e2e615a98b56542bff7b66e56f)
  * [Datumsbezogene Auswertung Omikron-Fälle, Stand 2021-12-22](https://gist.github.com/lenaschimmel/23e0930aab3d09ab749765e3afa774d3)
+ * Im Ordner `data` liegen inzwischen ein paar Ergebnisse vom 24.12., um die Verarbeitungslücke im Quell-Repository auszugleichen. Noch ist nicht klar, ob diese demnächst regelmäßig geupdatet, oder wieder entfernt werden.
   
 ## Kontakt und weitere Infos
 Updates über den Fortschritt der Tools und Analyse-Ergebnisse gibt's auf Twitter unter [@LenaSchimmel](https://twitter.com/LenaSchimmel). Eventuell (!) in Zukunft auch über einen gesonderten Account.
