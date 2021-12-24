@@ -3,3 +3,6 @@
 # Except this file
 !.gitignore
 !wildtyp.fasta
+!analysis_by_date.csv
+!result_omicron_metadata.csv
+!result_clades_and_metadata.csv
