@@ -60,7 +60,9 @@ Das Ergebnis wird in `data/analysis_by_date.csv` geschrieben.
 Bezugspunkt ist immer **das Datum, an dem die Probe genommen wurde**.
 ### `assign_clades.sh`
 Lässt die vorgefilterten Sequenzen mit nextclade analysieren und erzeugt eine Metadaten-csv, die auch die Angabe der Variante als Spalte enthält.
-### Weitere Tools folgen bald...
+
+### `find_labs.sh`
+Sucht die Labore heraus, die in November und Dezember die meisten Sequenzen mit SEQ_REASON = A ausgelöst haben, d.h., die am häufigsten per PCR einen Variantenverdacht feststellten. Da von denen nur Demis ID und Postleitzahl im RKI-Datensatz vorhanden sind, wird versucht, die konkreten Labore über die Mitgliederliste des ALM e.V. damit zu verbinden. **Das ist natürlich nicht 100% zuverlässig, insbesondere, falls es innerhalb eines PLZ-Bereichs mehrere Labore gibt, oder Labore nicht Mitglied im ALM e.V. sind.**
 ## Requirements:
  * bash oder äquivalente Shell
  * curl
